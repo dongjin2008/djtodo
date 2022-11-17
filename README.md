@@ -13,11 +13,26 @@ pip install djtodo-cli
 ## Usage
 
 ```add
-
-djtodo-cli add homework
-x 1 home work
+djtodo-cli add <task>
 ```
+>add task
 
+```list
+djtodo-cli list
+```
+>print list of task
+
+```remove
+djtodo-cli remove <number>
+```
+> remove task
+
+```done
+djtodo-cli done <number>
+```
+>mark task as done
+ 
+  
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
