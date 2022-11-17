@@ -18,4 +18,5 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage"
+"Homepage" = "https://github.com/dongjin2008/djtodo"
+"Bug Tracker" = "https://github.com/dongjin2008/djtodo/issues"
