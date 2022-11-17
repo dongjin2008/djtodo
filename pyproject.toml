@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "djtodo_jake0318"
+name = "djtodo-cli"
 version = "0.0.1"
 authors = [
     {name="jake0318", email="gimdongjin2008@gmail.com"},
