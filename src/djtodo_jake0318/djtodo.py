@@ -1,7 +1,5 @@
 import sys
 import File
-from File import file
-import pickle
 import module
 
 File.create_file()
@@ -10,17 +8,16 @@ try:
     argument = sys.argv[1]
 except IndexError:
     pass
-i = pickle.load(open("VSF.dat", "rb"))
 
 
 if argument == "add":
-    module.add(i)
+    module.add()
 
-if argument == "list":
+if argument == "list" or argument == "ls":
     module.ls()
 
 if argument == "remove":
-    module.remove(i)
+    module.remove()
 
 if argument == "done":
-    pass
+    module.done()
