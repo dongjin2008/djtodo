@@ -1,6 +1,6 @@
 # djtodo-cli
 
-djtodo is a CLI todo application.
+djtodo-cli is a CLI todo application.
 
 ## Installation
 

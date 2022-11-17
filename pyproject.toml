@@ -1,22 +1,20 @@
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
-[project]
+[tool.poetry]
 name = "djtodo-cli"
-version = "0.0.1"
-authors = [
-    {name="jake0318", email="gimdongjin2008@gmail.com"},
-]
-description = "CLI todo application in Python"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
 readme = "README.md"
-requires-python = ">=3.7"
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-]
+packages = [{include = "djtodo_cli"}, {include = "File.py"}, {include = "module.py"}]
+repository = "https://github.com/dongjin2008/djtodo"
 
-[project.urls]
-"Homepage" = "https://github.com/dongjin2008/djtodo"
-"Bug Tracker" = "https://github.com/dongjin2008/djtodo/issues"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.scripts]
+djtodo-cli = "djtodo_cli.djtodo.djtodo:cli"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
