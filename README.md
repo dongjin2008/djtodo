@@ -1,20 +1,21 @@
-# djtodo
+# djtodo-cli
 
 djtodo is a CLI todo application.
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install djtodo.
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install djtodo-cli.
 
 ```bash
-pip install djtodo
+pip install djtodo-cli
 ```
 
 ## Usage
 
-```python
+```add
 
-$ djtodo add homework
+djtodo-cli add homework
+x 1 home work
 ```
 
 ## Contributing
