@@ -42,6 +42,8 @@ def add():
         json.dump(dt, f, indent=4)
     reload_name()
 
+
+
 def ls():
     with open(File.file, "r", encoding='utf-8') as f:
         dt = json.load(f)
@@ -66,6 +68,11 @@ def remove():
     for items in dt:
         if items["name"] != int(name):
             new_data.append(items)
+    
+    if new_data == dt:
+        print("No such task exist!")
+    else:
+        print("task {} erased".format(name))
             
     
     with open(File.file, "w") as f:
@@ -91,6 +98,23 @@ def done():
     
     with open(File.file, "w") as f:
         json.dump(done_data, f, indent=4)
-        
 
+def search():
+    try:
+        keyword = sys.argv[2]
+    except IndexError:
+        print("djtodo: empy argument")
+        sys.exit()
+    
+    with open(File.file, "r", encoding='utf-8') as f:
+        dt = json.load(f)
+        for items in dt:
+            if items["status"] == False and keyword in items["task"]:
+                flag = "x"
+                print("{} {} {}".format(flag, items["name"], items["task"]))
+            elif items["status"] == True and keyword in items["task"]:
+                flag = "o"
+                print("{} {} {}".format(flag, items["name"], items["task"]))
+            else:
+                pass
 

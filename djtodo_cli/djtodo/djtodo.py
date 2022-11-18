@@ -17,6 +17,9 @@ def command(argument):
 
     if argument == "done":
         module.done()
+    
+    if argument == "search":
+        module.search()
 
 def cli(args=None):
     
