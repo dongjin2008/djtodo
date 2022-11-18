@@ -13,24 +13,29 @@ pip install djtodo-cli
 ## Usage
 
 ```add
-djtodo-cli add <task>
+djtodo add <task>
 ```
 >add task
 
 ```list
-djtodo-cli list
+djtodo list
 ```
 >print list of task
 
 ```remove
-djtodo-cli remove <number>
+djtodo remove <number>
 ```
 > remove task
 
 ```done
-djtodo-cli done <number>
+djtodo done <number>
 ```
 >mark task as done
+
+```search
+djtdo search <task>
+```
+>search for the task
  
   
 ## Contributing
