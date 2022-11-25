@@ -1,33 +1,34 @@
-import sys
-from File import create_file
+
 import module
 
-create_file()
-
+module.File.create_file()
 
 def command(argument):
     if argument == "add":
-        module.add()
+        module.Add()
 
     if argument == "list" or argument == "ls":
-        module.ls()
+        module.List_All()
 
     if argument == "remove":
-        module.remove()
+        module.Remove()
 
     if argument == "done":
-        module.done()
+        module.Done()
     
     if argument == "search":
-        module.search()
+        module.Search()
+    
+    if argument == "tag":
+        module.Tag()
 
 def cli(args=None):
     
     if not args:
         argument = ""
         try:
-            argument = sys.argv[1]
+            argument = module.sys.argv[1]
             command(argument)
         except IndexError:
             print("No argument")
-            sys.exit()
+            module.sys.exit()

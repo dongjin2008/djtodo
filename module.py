@@ -1,69 +1,78 @@
+###############imports###############
 import json
 import sys
 import File
 
-argument = ""
-try:
-    argument = sys.argv[1]
-except IndexError:
-    pass
+###############Variables###############
 test= {}
 data = {}
 task_removed = []
 new_data = []
 reloaded_data = []
 done_data = []
+###############Functions###############
 
-def reload_name():
-    with open(File.file, "r") as f:
+def Get_First_Argument():
+    try:
+        argument = sys.argv[2]
+    except IndexError:
+        print("djtodo: empy argument")
+        sys.exit()
+    else:
+        return argument
+
+def Get_Second_Argument():
+    try:
+        argument = sys.argv[3]
+    except IndexError:
+        argument = ""
+    else:
+        return argument
+
+def Json_Read(file):
+    with open(file, "r") as f:
         dt = json.load(f)
+        return dt
+        
+def Json_Write(file, new_data):
+    with open(file, "w") as f:
+        json.dump(new_data, f, indent=4)
+
+def List(items):
+    print("{} {} {} {}".format(items["status"], items["name"], items["task"], items["tag"]))
+
+def Reload_Name():
+    dt = Json_Read(File.file)
+
     for items in dt:
         index = dt.index(items)
         items["name"] = index + 1
         reloaded_data.append(items)
     
-    with open(File.file, "w") as f:
-        json.dump(dt, f, indent=4)
+    Json_Write(File.file, dt)
 
-def add():
-    try:
-        task = sys.argv[2]
-    except IndexError:
-        print("djtodo: empy argument")
-        sys.exit()
+def Add():
 
+    task = Get_First_Argument()
+    tag = Get_Second_Argument()
+
+    data = {'name': 0,'task': task, 'status': "x", 'tag': tag}
     
-    data = {'name': 0,'task': task, 'status': False}
+    dt = Json_Read(File.file)
+    dt.append(data)
+        
+    Json_Write(File.file, dt)
+    Reload_Name()
+
+def List_All():
+    dt = Json_Read(File.file)
+    for items in dt:
+        List(items)
+
+def Remove():
+    name = Get_First_Argument()
     
-    with open(File.file, "+r") as f:
-        dt = json.load(f)
-        dt.append(data)
-        f.seek(0)
-        json.dump(dt, f, indent=4)
-    reload_name()
-
-
-
-def ls():
-    with open(File.file, "r", encoding='utf-8') as f:
-        dt = json.load(f)
-        for items in dt:
-            if items["status"] == False:
-                flag = "x"
-                print("{} {} {}".format(flag, items["name"], items["task"]))
-            else:
-                flag = "o"
-                print("{} {} {}".format(flag, items["name"], items["task"]))
-
-def remove():
-    try:
-        name = sys.argv[2]
-    except IndexError:
-        print("djtodo: empy argument")
-        sys.exit()
-    
-    with open(File.file, "r") as f:
-        dt = json.load(f)
+    dt = Json_Read(File.file)
 
     for items in dt:
         if items["name"] != int(name):
@@ -74,47 +83,46 @@ def remove():
     else:
         print("task {} erased".format(name))
             
-    
-    with open(File.file, "w") as f:
-        json.dump(new_data, f, indent= 4)
-    reload_name()
+    Json_Write(File.file, new_data) 
+    Reload_Name()
 
-def done():
-    try:
-        status = sys.argv[2]
-    except IndexError:
-        print("djtodo: empy argument")
-        sys.exit()
+def Done():
+    status = Get_First_Argument()
     
-    with open(File.file, "r") as f:
-        dt = json.load(f)
+    dt = Json_Read(File.file)
     
     for items in dt:
         if items["name"] == int(status):
-            items["status"] = True
+            items["status"] = "o"
             done_data.append(items)
         else:
             done_data.append(items)
     
-    with open(File.file, "w") as f:
-        json.dump(done_data, f, indent=4)
+    Json_Write(File.file, done_data)
 
-def search():
-    try:
-        keyword = sys.argv[2]
-    except IndexError:
-        print("djtodo: empy argument")
-        sys.exit()
+def Search():
+
+    keyword = Get_First_Argument()
     
-    with open(File.file, "r", encoding='utf-8') as f:
-        dt = json.load(f)
-        for items in dt:
-            if items["status"] == False and keyword in items["task"]:
-                flag = "x"
-                print("{} {} {}".format(flag, items["name"], items["task"]))
-            elif items["status"] == True and keyword in items["task"]:
-                flag = "o"
-                print("{} {} {}".format(flag, items["name"], items["task"]))
+    dt = Json_Read(File.file)
+    
+    for items in dt:
+        if keyword in items["task"]:
+            List(items)
+        else:
+            pass
+
+def Tag():
+    tag = Get_First_Argument()
+
+    dt = Json_Read(File.file)
+
+    for items in dt:
+        try:
+            if tag in items["tag"]:
+                List(items)
             else:
                 pass
+        except TypeError:
+            pass
 
