@@ -1,49 +1,59 @@
+
 # djtodo-cli
 
-djtodo-cli is a CLI todo application.
+djtodo-cli is a cli todo program for linux
 
-## Installation
+<details>
+<summary>Table of Contents</summary>
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install djtodo-cli.
+- [Getting Started](#getting-started)
+    - [Installation](#installation)
+- [Usage](#usage)
+- [Authors](#authors)
+- [License](#license)
+</details>
+
+## Getting Started
+### Installation
+
+Install djtodo-cli with pip
 
 ```bash
-pip install djtodo-cli
+  pip3 install djtodo-cli
 ```
-
+    
 ## Usage
 
-```add
-djtodo add <task>
+```create new task
+$ djtodo add task
 ```
->add task
+Create new task, replace "taks" with real task
 
-```list
-djtodo list
+```list tasks
+$ djtodo list
 ```
->print list of task
+Print list of tasks
 
-```remove
-djtodo remove <number>
+```remove task
+$ djtdo remove number
 ```
-> remove task
+Remove the specific task, replace "number" with task number
 
-```done
-djtodo done <number>
+```make as done
+$ djtodo done number
 ```
->mark task as done
+Mark the task as done
 
-```search
-djtdo search <task>
+```search the task
+$ djtodo search task
 ```
->search for the task
- 
-  
-## Contributing
+Search for specific task, replace task with exisisting task
 
-Pull requests are welcome. For major changes, please open an issue first
-to discuss what you would like to change.
 
-Please make sure to update tests as appropriate.
+## Authors
+
+- [@dongjin2008](https://www.github.com/dongjin2008)
+
 
 ## License
 
