@@ -5,9 +5,9 @@ import shutil
 import pickle
 
 username = getpass.getuser()
-base = Path("/home/{}/.config/".format(username))
-folder = Path("{}/djtodo".format(base))
-file = Path("{}/djtodo/task.json".format(base))
+base = Path(f"/home/{username}/.config/")
+folder = Path(f"{base}/djtodo")
+file = Path(f"{base}/djtodo/task.json")
 
 def create_file():
     if not folder.is_dir():

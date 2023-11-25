@@ -31,15 +31,14 @@ def Get_Second_Argument():
 
 def Json_Read(file):
     with open(file, "r") as f:
-        dt = json.load(f)
-        return dt
+        return json.load(f)
         
 def Json_Write(file, new_data):
     with open(file, "w") as f:
         json.dump(new_data, f, indent=4)
 
 def List(items):
-    print("{} {} {} {}".format(items["status"], items["name"], items["task"], items["tag"]))
+    print(f'{items["status"]} {items["name"]} {items["task"]} {items["tag"]}')
 
 def Reload_Name():
     dt = Json_Read(File.file)
@@ -71,46 +70,41 @@ def List_All():
 
 def Remove():
     name = Get_First_Argument()
-    
+
     dt = Json_Read(File.file)
 
     for items in dt:
         if items["name"] != int(name):
             new_data.append(items)
-    
+
     if new_data == dt:
         print("No such task exist!")
     else:
-        print("task {} erased".format(name))
-            
-    Json_Write(File.file, new_data) 
+        print(f"task {name} erased")
+
+    Json_Write(File.file, new_data)
     Reload_Name()
 
 def Done():
     status = Get_First_Argument()
-    
+
     dt = Json_Read(File.file)
-    
+
     for items in dt:
         if items["name"] == int(status):
             items["status"] = "o"
-            done_data.append(items)
-        else:
-            done_data.append(items)
-    
+        done_data.append(items)
     Json_Write(File.file, done_data)
 
 def Search():
 
     keyword = Get_First_Argument()
-    
+
     dt = Json_Read(File.file)
-    
+
     for items in dt:
         if keyword in items["task"]:
             List(items)
-        else:
-            pass
 
 def Tag():
     tag = Get_First_Argument()
@@ -121,8 +115,6 @@ def Tag():
         try:
             if tag in items["tag"]:
                 List(items)
-            else:
-                pass
         except TypeError:
             pass
 
