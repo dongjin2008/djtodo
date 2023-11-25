@@ -7,7 +7,7 @@ def command(argument):
     if argument == "add":
         module.Add()
 
-    if argument == "list" or argument == "ls":
+    if argument in ["list", "ls"]:
         module.List_All()
 
     if argument == "remove":
@@ -15,10 +15,10 @@ def command(argument):
 
     if argument == "done":
         module.Done()
-    
+
     if argument == "search":
         module.Search()
-    
+
     if argument == "tag":
         module.Tag()
 
